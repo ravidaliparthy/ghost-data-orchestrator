@@ -1,0 +1,48 @@
+{
+  "case_id": "custom_case_02",
+  "name": "Restore Risk Only Incomplete Case",
+  "description": "All primary and replica database records have been deleted and verified absent, but an active backup restore job can re-hydrate personal data into production.",
+  "request": {
+    "case_id": "custom_case_02",
+    "email": "david.chen@enterprise.org",
+    "requested_at": "2026-08-10T09:00:00Z",
+    "reported_status": "COMPLETE",
+    "reported_at": "2026-08-12T14:30:00Z",
+    "audit_at": "2026-08-20T18:00:00Z",
+    "request_text": "I request the full erasure of my user profile and related customer data."
+  },
+  "expected_intent": {
+    "authorized": true,
+    "intent": "DELETE",
+    "category": "EXPLICIT_DELETION"
+  },
+  "expected_status": "INCOMPLETE",
+  "expected_steps": [
+    {
+      "step_no": 1,
+      "phase": "FINDING",
+      "system_id": "backup_service",
+      "resource_id": "backup_profile_daily_snapshot",
+      "operation": "REPORT_RESTORE_RISK",
+      "state": "ACTIVE"
+    },
+    {
+      "step_no": 2,
+      "phase": "REMEDIATION",
+      "system_id": "backup_service",
+      "resource_id": "backup_profile_daily_snapshot",
+      "operation": "BLOCK_RESTORE",
+      "state": "BLOCKED",
+      "evidence_id": ""
+    },
+    {
+      "step_no": 3,
+      "phase": "VERIFICATION",
+      "system_id": "backup_service",
+      "resource_id": "backup_profile_daily_snapshot",
+      "operation": "VERIFY_RESTORE_BLOCKED",
+      "state": "BLOCKED",
+      "evidence_id": ""
+    }
+  ]
+}

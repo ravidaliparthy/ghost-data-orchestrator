@@ -1,0 +1,13 @@
+{
+  "run_at": "2026-10-25T11:48:49.002077+00:00",
+  "cases": 518,
+  "status_counts": {
+    "INCOMPLETE": 380,
+    "COMPLETE": 128,
+    "NOT_APPLICABLE": 10
+  },
+  "review_queue_size": 249,
+  "integrity_errors": [],
+  "models_used": [],
+  "note": "No LLM calls made; deterministic rule-based engine."
+}

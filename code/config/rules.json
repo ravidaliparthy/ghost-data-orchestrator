@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "tenant": "northstar_shop",
+  "description": "Configurable deletion rules override layer. deletion_rules.csv is the base source of truth.",
+  "rule_overrides": {},
+  "category_to_system": {
+    "USER_PROFILE": ["account_service"],
+    "SECONDARY_IDENTIFIER": ["account_service", "identity_service"],
+    "SEARCH_INDEX_ENTRY": ["search_service"],
+    "CACHE_ENTRY": ["account_service", "search_service"],
+    "SUPPORT_MESSAGE": ["support_platform"],
+    "SUPPORT_ATTACHMENT": ["support_platform"],
+    "ANALYTICS_PROFILE": ["analytics_platform"],
+    "PRODUCT_TELEMETRY": ["analytics_platform"],
+    "USER_EXPORT": ["export_service"],
+    "MARKETING_PROFILE": ["marketing_service"],
+    "EMAIL_DELIVERY_LOG": ["notification_service"],
+    "SECURITY_AUDIT_LOG": ["security_service"],
+    "LEGAL_HOLD_RECORD": ["legal_service"],
+    "BACKUP_ARCHIVE": ["backup_service"],
+    "ACCOUNT_TOMBSTONE": ["identity_service"]
+  },
+  "identifier_normalization": {
+    "email": ["lowercase", "strip", "remove_plus_tag", "nfc"],
+    "phone": ["strip_nondigits", "e164_core"]
+  },
+  "llm": {
+    "enabled": false,
+    "temperature": 0,
+    "cache": true,
+    "fallback": "heuristic_only",
+    "max_retries": 2,
+    "timeout_seconds": 10
+  },
+  "security": {
+    "redact_pii_in_logs": true,
+    "no_future_evidence": true,
+    "unknown_never_complete": true,
+    "boundary_inclusive": true
+  }
+}

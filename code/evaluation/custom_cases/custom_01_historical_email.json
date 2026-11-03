@@ -1,0 +1,45 @@
+{
+  "case_id": "custom_case_01",
+  "name": "Historical Email Deletion Request",
+  "description": "User submits deletion request using a superseded email address that was changed in user_audit_log prior to audit_at.",
+  "request": {
+    "case_id": "custom_case_01",
+    "email": "sarah.oldname@example.com",
+    "requested_at": "2026-09-01T10:00:00Z",
+    "reported_status": "COMPLETE",
+    "reported_at": "2026-09-02T12:00:00Z",
+    "audit_at": "2026-09-05T00:00:00Z",
+    "request_text": "Please delete my account and all associated personal data from your systems."
+  },
+  "user_identity": {
+    "user_id": "user_custom_01",
+    "current_email": "sarah.newname@example.com",
+    "historical_emails": ["sarah.oldname@example.com"],
+    "phone": "+1 555 019 2831"
+  },
+  "expected_intent": {
+    "authorized": true,
+    "intent": "DELETE",
+    "category": "EXPLICIT_DELETION"
+  },
+  "expected_identity_resolution": {
+    "user_id": "user_custom_01",
+    "matched_by": "historical_email",
+    "all_search_keys": [
+      "user_custom_01",
+      "sarah.oldname@example.com",
+      "sarah.newname@example.com",
+      "+1 555 019 2831"
+    ]
+  },
+  "expected_status": "INCOMPLETE",
+  "expected_findings": [
+    {
+      "phase": "FINDING",
+      "operation": "REPORT_REMAINING_RECORD",
+      "system_id": "account_service",
+      "resource_id": "account_custom_01",
+      "state": "PRESENT"
+    }
+  ]
+}

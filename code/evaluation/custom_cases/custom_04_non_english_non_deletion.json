@@ -1,0 +1,22 @@
+{
+  "case_id": "custom_case_04",
+  "name": "Non-English Non-Deletion Request (German Data Export & Correction)",
+  "description": "User submits a GDPR Article 15/16 data access and export request in German without requesting account or profile deletion. Deletion is unauthorized.",
+  "request": {
+    "case_id": "custom_case_04",
+    "email": "hans.gruber@firma.de",
+    "requested_at": "2026-09-14T14:20:00Z",
+    "reported_status": "NOT_STARTED",
+    "reported_at": "2026-09-14T14:20:00Z",
+    "audit_at": "2026-09-20T10:00:00Z",
+    "request_text": "Ich bitte um eine vollständige Auskunft und Kopie aller über mich gespeicherten personenbezogenen Daten gemäß Art. 15 DSGVO. Bitte löschen Sie mein Konto nicht."
+  },
+  "expected_intent": {
+    "authorized": false,
+    "intent": "ACCESS",
+    "category": "ACCESS_OR_EXPORT",
+    "negation_detected": true
+  },
+  "expected_status": "NOT_APPLICABLE",
+  "expected_steps": []
+}

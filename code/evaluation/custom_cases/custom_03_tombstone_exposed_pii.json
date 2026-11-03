@@ -1,0 +1,48 @@
+{
+  "case_id": "custom_case_03",
+  "name": "Account Tombstone with Exposed PII",
+  "description": "An account tombstone is retained per Rule 11 with stable user reference, but prohibited direct identifiers (plaintext email hash and phone number) remain unredacted in the record.",
+  "request": {
+    "case_id": "custom_case_03",
+    "email": "elena.rostova@techmail.ru",
+    "requested_at": "2026-09-10T11:15:00Z",
+    "reported_status": "COMPLETE",
+    "reported_at": "2026-09-12T08:00:00Z",
+    "audit_at": "2026-09-18T16:00:00Z",
+    "request_text": "Прошу удалить мою учетную запись и стереть все персональные данные."
+  },
+  "expected_intent": {
+    "authorized": true,
+    "intent": "DELETE",
+    "category": "EXPLICIT_DELETION"
+  },
+  "expected_status": "INCOMPLETE",
+  "expected_steps": [
+    {
+      "step_no": 1,
+      "phase": "FINDING",
+      "system_id": "identity_service",
+      "resource_id": "tombstone_user_9921",
+      "operation": "REPORT_EXPOSED_PII",
+      "state": "PRESENT"
+    },
+    {
+      "step_no": 2,
+      "phase": "REMEDIATION",
+      "system_id": "identity_service",
+      "resource_id": "tombstone_user_9921",
+      "operation": "REDACT_RECORD",
+      "state": "REDACTED",
+      "evidence_id": ""
+    },
+    {
+      "step_no": 3,
+      "phase": "VERIFICATION",
+      "system_id": "identity_service",
+      "resource_id": "tombstone_user_9921",
+      "operation": "VERIFY_RECORD_REDACTED",
+      "state": "REDACTED",
+      "evidence_id": ""
+    }
+  ]
+}

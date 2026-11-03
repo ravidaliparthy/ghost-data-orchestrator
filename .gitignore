@@ -1,0 +1,44 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Intermediate & scratch outputs
+output.last_good.csv
+test_output.csv
+output.lock
+*.lock
+
+# Execution logs
+log.txt
+*.log
+
+# Scratch scripts & temporary experiments
+scratch/
+.system_generated/
+
+# Checkpoint archives & baseline backups
+ghostdata_checkpoints/
+ghostdata_baseline/
+
+# Redundant agent traces & binary archives
+agent-trace/
+agent-trace.zip
+code.zip
+
+# Outdated / redundant internal checklists and scratch notes
+TRACE_CHECKLIST.md
+agent_trace_instructions.md
+CLAUDE.md
+code/evaluation/FINAL_REPORT.md
+code/evaluation/sample_analysis.md
+code/evaluation/crosscheck_report.md
+
+# Operating System & IDE configurations
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
